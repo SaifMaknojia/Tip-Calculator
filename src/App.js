@@ -25,19 +25,60 @@ function App() {
             </div>
             <div className="tips">
               <h2 className="tips__header">Select tip %</h2>
-              <div className="tips__value">
-                <p className="tips__value--fixed">5%</p>
-                <p className="tips__value--fixed">10%</p>
-
-                <p className="tips__value--fixed">15%</p>
-                <p className="tips__value--fixed">25%</p>
-
-                <p className="tips__value--fixed">50%</p>
-                <input
-                  className="tips__value--custom"
-                  type="text"
-                  placeholder="Custom"
-                />
+              <div className="tips-value">
+                <label className="tips-value__fixed">
+                  <input
+                    className="tips-value__fixed--input"
+                    type="radio"
+                    name="tip"
+                    value="5"
+                  />
+                  <span className="tips-value__fixed--span">5%</span>
+                </label>
+                <label className="tips-value__fixed">
+                  <input
+                    className="tips-value__fixed--input"
+                    type="radio"
+                    name="tip"
+                    value="10"
+                  />
+                  <span className="tips-value__fixed--span">10%</span>
+                </label>
+                <label className="tips-value__fixed">
+                  <input
+                    className="tips-value__fixed--input"
+                    type="radio"
+                    name="tip"
+                    value="15"
+                  />
+                  <span className="tips-value__fixed--span">15%</span>
+                </label>
+                <label className="tips-value__fixed">
+                  <input
+                    className="tips-value__fixed--input"
+                    type="radio"
+                    name="tip"
+                    value="25"
+                  />
+                  <span className="tips-value__fixed--span">25%</span>
+                </label>
+                <label className="tips-value__fixed">
+                  <input
+                    className="tips-value__fixed--input"
+                    className="tips-value__fixed"
+                    type="radio"
+                    name="tip"
+                    value="50"
+                  />
+                  <span className="tips-value__fixed--span">50%</span>
+                </label>
+                <label>
+                  <input
+                    className="tips-value__custom"
+                    type="text"
+                    placeholder="Custom"
+                  />
+                </label>
               </div>
             </div>
             <div className="total-people">
