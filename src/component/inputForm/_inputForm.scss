@@ -9,15 +9,17 @@
     &--input {
       margin-top: 5px;
       background-color: #efefef;
-      border: none;
+      border: 2px solid transparent;
       height: 40px;
-      align-self: flex-end;
+      text-align: end;
       width: 100%;
       padding: 0 25px;
       color: $dark-grayish-cyan-plus;
       font-weight: 700;
       font-size: 16px;
       border-radius: 5px;
+      display: flex;
+      justify-content: flex-end;
       &:focus {
         border: 2px solid $strong-cyan;
       }
