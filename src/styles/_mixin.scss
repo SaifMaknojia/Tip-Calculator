@@ -1,0 +1,9 @@
+@mixin custom-header {
+  color: $dark-grayish-cyan;
+  font-size: 16px;
+}
+
+@mixin tip-header {
+  color: $ligth-grayish-white-cyan;
+  font-size: 16px;
+}

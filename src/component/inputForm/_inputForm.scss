@@ -1,0 +1,37 @@
+/* @import '../../styles/colors';
+@import '../../styles/mixin'; */
+
+.bill {
+  &__header {
+    @include custom-header();
+  }
+  &__value {
+    position: relative;
+    display: flex;
+
+    &--input {
+      margin-top: 5px;
+      background-color: #efefef;
+      border: none;
+      height: 40px;
+      align-self: flex-end;
+      width: 100%;
+      padding: 0 25px;
+      color: $dark-grayish-cyan-plus;
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 5px;
+      &:focus {
+        border: 2px solid $strong-cyan;
+      }
+      &:active {
+        border: 2px solid $strong-cyan;
+      }
+    }
+    &--dollar {
+      position: absolute;
+      top: 17px;
+      left: 10px;
+    }
+  }
+}

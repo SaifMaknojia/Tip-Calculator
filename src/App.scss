@@ -1,21 +1,9 @@
-//can be added to seperate file _colors.scss
-$strong-cyan: #26c0ab;
-$color-dark-cyan: #00494d;
-$dark-grayish-cyan-plus: #528489;
-$dark-grayish-cyan: #769698;
-$light-grayish-cyan: #c5e4e7;
-$ligth-grayish-white-cyan: #f4fafa;
-
-//can be added in seperate file _mixin.scss
-@mixin custom-header {
-  color: $dark-grayish-cyan;
-  font-size: 16px;
-}
-
-@mixin tip-header {
-  color: $ligth-grayish-white-cyan;
-  font-size: 16px;
-}
+@import './component/TipsFormContainer/tipsFormContainer';
+@import './component/inputForm/inputForm';
+@import './component/amountCount/amountCount';
+@import './component/brandImage/brandImage';
+@import './styles/colors';
+@import './styles/mixin';
 
 .container {
   background-color: $ligth-grayish-white-cyan;
@@ -42,14 +30,6 @@ $ligth-grayish-white-cyan: #f4fafa;
   }
 }
 
-.brand {
-  margin: 5vh 0 3vh 0;
-  @media (min-width: 768px) {
-    margin: 0;
-    margin-bottom: 50px;
-  }
-}
-
 .main {
   background-color: $ligth-grayish-white-cyan;
   padding: 30px;
@@ -59,48 +39,6 @@ $ligth-grayish-white-cyan: #f4fafa;
   @media (min-width: 768px) {
     display: flex;
     max-width: 1280px;
-  }
-}
-
-.bill {
-  &__header {
-    @include custom-header();
-  }
-  &__value {
-    position: relative;
-    display: flex;
-
-    &--input {
-      margin-top: 5px;
-      background-color: #efefef;
-      border: none;
-      height: 40px;
-      align-self: flex-end;
-      width: 100%;
-      padding: 0 25px;
-      color: $dark-grayish-cyan-plus;
-      font-weight: 700;
-      font-size: 16px;
-      border-radius: 5px;
-      &:focus {
-        border: 2px solid $strong-cyan;
-      }
-      &:active {
-        border: 2px solid $strong-cyan;
-      }
-    }
-    &--dollar {
-      position: absolute;
-      top: 17px;
-      left: 10px;
-    }
-  }
-}
-
-.tips {
-  &__header {
-    @include custom-header();
-    margin-top: 20px;
   }
 }
 
@@ -144,24 +82,6 @@ $ligth-grayish-white-cyan: #f4fafa;
   }
 }
 
-.individual {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
-  &__tip {
-    &--amount {
-      @include tip-header();
-    }
-    &--person {
-      color: $dark-grayish-cyan;
-    }
-  }
-  &__amount {
-    color: $strong-cyan;
-  }
-}
-
 .total {
   display: flex;
   justify-content: space-between;
@@ -182,21 +102,19 @@ $ligth-grayish-white-cyan: #f4fafa;
   }
 }
 
-.reset {
-  &__button {
-    cursor: pointer;
-    width: 100%;
-    height: 40px;
-    font-size: 20px;
-    color: $color-dark-cyan;
-    font-weight: 700;
-    background-color: $strong-cyan;
-    border-radius: 5px;
-    border-color: transparent;
+.reset__button {
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  color: $color-dark-cyan;
+  font-weight: 700;
+  background-color: $strong-cyan;
+  border-radius: 5px;
+  border-color: transparent;
 
-    &:hover {
-      background-color: $light-grayish-cyan;
-    }
+  &:hover {
+    background-color: $light-grayish-cyan;
   }
 }
 
@@ -216,160 +134,5 @@ $ligth-grayish-white-cyan: #f4fafa;
     margin-left: 2%;
     display: flex;
     margin-top: 10px;
-  }
-}
-
-.tips-value__fixed input[type='radio'] {
-  display: none;
-}
-.tips-value__fixed input[type='radio']:checked + span {
-  color: $color-dark-cyan;
-  background-color: $strong-cyan;
-}
-input[type='radio']:checked {
-  color: $color-dark-cyan;
-  background-color: $strong-cyan;
-  width: 100%;
-}
-
-// select buttons
-/* .tips-value {
-  display: flex;
-  flex-wrap: wrap;
-
-  &__fixed {
-    display: inline-block;
-    text-align: center;
-    width: 125px;
-    padding: 6px 20px;
-    border-radius: 5px;
-    margin: 10px;
-    color: white;
-    flex-grow: inherit;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: 700;
-    background-color: $color-dark-cyan;
-
-        &:hover {
-        color: $color-dark-cyan;
-        background-color: $strong-cyan;
-      } 
-    @media (min-width: 480px) {
-      width: 180px;
-    }
-    @media (min-width: 560px) {
-      width: 220px;
-    }
-    @media (min-width: 660px) {
-      width: 250px;
-    }
-    @media (min-width: 768px) {
-      width: 110px;
-    }
-  }
-
-  &__custom {
-    width: 125px;
-    height: 41px;
-    margin: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #8eb4a8;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 700;
-    color: $color-dark-cyan;
-    &:focus {
-      border: 2px solid $strong-cyan;
-    }
-    &:active {
-      border: 2px solid $strong-cyan;
-    }
-    @media (min-width: 480px) {
-      width: 180px;
-    }
-    @media (min-width: 560px) {
-      width: 220px;
-    }
-    @media (min-width: 660px) {
-      width: 250px;
-    }
-    @media (min-width: 768px) {
-      width: 110px;
-    }
-
-    &::placeholder {
-      color: $color-dark-cyan;
-    }
-  }
-} */
-
-.tips-value__custom {
-  width: 125px;
-  height: 41px;
-  margin: 10px;
-  border-radius: 5px;
-  border: none;
-  background-color: #8eb4a8;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-  color: $color-dark-cyan;
-  &:focus {
-    border: 2px solid $strong-cyan;
-  }
-  &:active {
-    border: 2px solid $strong-cyan;
-  }
-  @media (min-width: 480px) {
-    width: 180px;
-  }
-  @media (min-width: 560px) {
-    width: 220px;
-  }
-  @media (min-width: 660px) {
-    width: 250px;
-  }
-  @media (min-width: 768px) {
-    width: 110px;
-  }
-
-  &::placeholder {
-    color: $color-dark-cyan;
-  }
-}
-
-.tips-value__fixed {
-  &--span {
-    display: inline-block;
-    text-align: center;
-    width: 125px;
-    padding: 6px 20px;
-    border-radius: 5px;
-    margin: 10px;
-    color: white;
-    flex-grow: inherit;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: 700;
-    background-color: $color-dark-cyan;
-
-    &:hover {
-      color: $color-dark-cyan;
-      background-color: $strong-cyan;
-    }
-    @media (min-width: 480px) {
-      width: 180px;
-    }
-    @media (min-width: 560px) {
-      width: 220px;
-    }
-    @media (min-width: 660px) {
-      width: 250px;
-    }
-    @media (min-width: 768px) {
-      width: 110px;
-    }
   }
 }

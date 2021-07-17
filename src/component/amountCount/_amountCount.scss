@@ -1,0 +1,21 @@
+.individual {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  &__tip {
+    &--amount {
+      @include tip-header();
+    }
+    &--person {
+      color: $dark-grayish-cyan;
+    }
+  }
+  &__amount {
+    color: $strong-cyan;
+
+    &--value {
+      font-size: 32px;
+    }
+  }
+}
