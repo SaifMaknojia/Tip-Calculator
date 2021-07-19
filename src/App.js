@@ -15,20 +15,42 @@ function App() {
     customTip: ''
   });
 
-  console.log('bill:', check.bill);
-  console.log('tip:', check.tip);
-  console.log('numberOfPeople:', check.numberOfPeople);
-  console.log('customTip:', check.customTip);
+  const percentageFormula = (check.tip / 100) * check.bill;
 
-  const individualTip = (check.bill * check.tip) / 100 / check.numberOfPeople;
-  const totalBill =
-    Number(check.bill) + Number(individualTip * check.numberOfPeople);
+  //creating function to dynamically update info based on user actions
+  const individualTipCalculation = () => {
+    if (check.tip && check.customTip) {
+      return (
+        check.customTip / check.numberOfPeople +
+        percentageFormula / check.numberOfPeople
+      );
+    } else if (check.tip) {
+      return percentageFormula / check.numberOfPeople;
+    } else if (check.customTip) {
+      return check.customTip / check.numberOfPeople;
+    }
+  };
+
+  const totalBillCalculation = () => {
+    if (check.tip && check.customTip) {
+      return (
+        (percentageFormula + check.bill + check.customTip) /
+        check.numberOfPeople
+      );
+    } else if (check.customTip) {
+      return (check.customTip + check.bill) / check.numberOfPeople;
+    } else if (check.tip) {
+      return (percentageFormula + check.bill) / check.numberOfPeople;
+    } else if (check.customTip === 0) {
+      return check.bill / check.numberOfPeople;
+    }
+  };
 
   const handleChange = event => {
     const { name, value } = event.target;
     setCheck(prev => ({
       ...prev,
-      [name]: value
+      [name]: Number(value)
     }));
   };
 
@@ -56,6 +78,7 @@ function App() {
               img={DollarSign}
               title="Bill"
             />
+            {/* Either custom tip || tip in percentage */}
             <TipsFormContainer
               input={check.tip}
               handleChange={handleChange}
@@ -76,14 +99,18 @@ function App() {
                 <AmountCount
                   title="Tip Amount"
                   amount={
-                    individualTip === Number.POSITIVE_INFINITY
+                    individualTipCalculation() === Number.POSITIVE_INFINITY
                       ? 0
-                      : individualTip
+                      : individualTipCalculation()
                   }
                 />
                 <AmountCount
                   title="Total Amount"
-                  amount={totalBill ? totalBill : 0}
+                  amount={
+                    totalBillCalculation() === Number.POSITIVE_INFINITY
+                      ? 0
+                      : totalBillCalculation()
+                  }
                 />
               </div>
               <button onClick={handleReset} className="reset__button">

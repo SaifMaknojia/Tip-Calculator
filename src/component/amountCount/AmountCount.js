@@ -8,7 +8,9 @@ const AmountCount = ({ title, amount }) => {
         <p className="individual__tip--person">/ person</p>
       </div>
       <div className="individual__amount">
-        <h2 className="individual__amount--value">${!amount ? 0 : amount}</h2>
+        <h2 className="individual__amount--value">
+          ${amount ? amount.toFixed(2) : 0}
+        </h2>
       </div>
     </div>
   );
