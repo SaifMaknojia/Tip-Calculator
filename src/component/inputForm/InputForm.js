@@ -8,7 +8,7 @@ const InputForm = ({ img, title, name, placeholder, value, handleChange }) => {
         <img className="bill__value--dollar" src={img} alt="value" />
         <input
           placeholder={placeholder}
-          onChange={handleChange}
+          onChange={e => handleChange(e.target.value)}
           className="bill__value--input"
           value={value}
           type="number"
