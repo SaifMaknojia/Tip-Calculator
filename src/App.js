@@ -8,35 +8,38 @@ import AmountCount from './component/amountCount/AmountCount';
 import BrandImage from './component/brandImage/BrandImage';
 
 function App() {
-  const [bill, setBill] = useState('');
-  const [numberOfPeople, setNumberOfPeople] = useState('');
-  const [tip, setTip] = useState('');
-  const [customTip, setCustomTip] = useState('');
+  const [check, setCheck] = useState({
+    bill: '',
+    tip: '',
+    numberOfPeople: '',
+    customTip: ''
+  });
 
-  console.log(bill, numberOfPeople);
-  // handling input data from the form
-  const handleBillChange = e => {
-    setBill(e.target.value);
-  };
+  console.log('bill:', check.bill);
+  console.log('tip:', check.tip);
+  console.log('numberOfPeople:', check.numberOfPeople);
+  console.log('customTip:', check.customTip);
 
-  const handleNumberOfPeopleChange = e => {
-    setNumberOfPeople(e.target.value);
-  };
+  const individualTip = (check.bill * check.tip) / 100 / check.numberOfPeople;
+  const totalBill =
+    Number(check.bill) + Number(individualTip * check.numberOfPeople);
 
-  const handleCustomTip = e => {
-    setCustomTip(e.target.value);
-  };
-
-  const handleTipChange = e => {
-    setTip(e.target.value);
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setCheck(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   // handling reset button
   const handleReset = () => {
-    setBill('');
-    setNumberOfPeople('');
-    setTip('');
-    setCustomTip('');
+    setCheck({
+      bill: '',
+      tip: '',
+      numberOfPeople: '',
+      customTip: ''
+    });
   };
 
   return (
@@ -48,20 +51,19 @@ function App() {
             <InputForm
               placeholder="0.00"
               name="bill"
-              value={bill}
-              handleChange={setBill}
+              value={check.bill}
+              handleChange={handleChange}
               img={DollarSign}
               title="Bill"
             />
             <TipsFormContainer
-              input={tip}
-              handleChange={handleTipChange}
-              value={customTip}
-              handleCustomTipChange={handleCustomTip}
+              input={check.tip}
+              handleChange={handleChange}
+              value={check.customTip}
             />
             <InputForm
-              value={numberOfPeople}
-              handleChange={setNumberOfPeople}
+              value={check.numberOfPeople}
+              handleChange={handleChange}
               placeholder="Total Number of people"
               name="numberOfPeople"
               img={PersonIcon}
@@ -71,8 +73,18 @@ function App() {
           <div className="dynamic">
             <div className="tip-container">
               <div>
-                <AmountCount title="Tip Amount" amount="20" />
-                <AmountCount title="Total Amount" amount="100" />
+                <AmountCount
+                  title="Tip Amount"
+                  amount={
+                    individualTip === Number.POSITIVE_INFINITY
+                      ? 0
+                      : individualTip
+                  }
+                />
+                <AmountCount
+                  title="Total Amount"
+                  amount={totalBill ? totalBill : 0}
+                />
               </div>
               <button onClick={handleReset} className="reset__button">
                 Reset

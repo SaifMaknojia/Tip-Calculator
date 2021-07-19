@@ -1,11 +1,6 @@
 import React from 'react';
 
-const TipsFormContainer = ({
-  input,
-  handleChange,
-  value,
-  handleCustomTipChange
-}) => {
+const TipsFormContainer = ({ input, handleChange, value }) => {
   return (
     <div className="tips">
       <h2 className="tips__header">Select tip %</h2>
@@ -76,8 +71,8 @@ const TipsFormContainer = ({
             type="text"
             placeholder="Custom"
             value={value}
-            name="tip"
-            onChange={handleCustomTipChange}
+            name="customTip"
+            onChange={handleChange}
           />
         </label>
       </div>
