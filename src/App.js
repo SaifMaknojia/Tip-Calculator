@@ -15,17 +15,17 @@ function App() {
     customTip: ''
   });
 
-  const percentageFormula = (check.tip / 100) * check.bill;
+  const tipIntoPercentage = (check.tip / 100) * check.bill;
 
   //creating function to dynamically update info based on user actions
   const individualTipCalculation = () => {
     if (check.tip && check.customTip) {
       return (
         check.customTip / check.numberOfPeople +
-        percentageFormula / check.numberOfPeople
+        tipIntoPercentage / check.numberOfPeople
       );
     } else if (check.tip) {
-      return percentageFormula / check.numberOfPeople;
+      return tipIntoPercentage / check.numberOfPeople;
     } else if (check.customTip) {
       return check.customTip / check.numberOfPeople;
     }
@@ -34,13 +34,13 @@ function App() {
   const totalBillCalculation = () => {
     if (check.tip && check.customTip) {
       return (
-        (percentageFormula + check.bill + check.customTip) /
+        (tipIntoPercentage + check.bill + check.customTip) /
         check.numberOfPeople
       );
     } else if (check.customTip) {
       return (check.customTip + check.bill) / check.numberOfPeople;
     } else if (check.tip) {
-      return (percentageFormula + check.bill) / check.numberOfPeople;
+      return (tipIntoPercentage + check.bill) / check.numberOfPeople;
     } else if (check.customTip === 0) {
       return check.bill / check.numberOfPeople;
     }
@@ -84,6 +84,7 @@ function App() {
               handleChange={handleChange}
               value={check.customTip}
             />
+
             <InputForm
               value={check.numberOfPeople}
               handleChange={handleChange}

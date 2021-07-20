@@ -4,15 +4,19 @@
 .tips-value__fixed input[type='radio'] {
   display: none;
 }
-.tips-value__fixed input[type='radio']:checked + span {
-  color: $color-dark-cyan;
-  background-color: $strong-cyan;
-}
-input[type='radio']:checked {
-  color: $color-dark-cyan;
-  background-color: $strong-cyan;
-  width: 100%;
-}
+// .tips-value__fixed input[type='radio']:checked + span {
+//   color: $color-dark-cyan;
+//   background-color: $strong-cyan;
+
+//   &:checked {
+//     color: $color-dark-cyan;
+//     background-color: $strong-cyan;
+//   }
+// }
+// .tips-value__fixed input[type='radio']:checked {
+//   color: $color-dark-cyan;
+//   background-color: $strong-cyan;
+// }
 
 .tips {
   &__header {
@@ -66,6 +70,7 @@ input[type='radio']:checked {
     font-size: 20px;
     font-weight: 700;
     color: $color-dark-cyan;
+
     &:focus {
       border: 2px solid $strong-cyan;
     }
@@ -90,3 +95,5 @@ input[type='radio']:checked {
     }
   }
 }
+
+/*  */
