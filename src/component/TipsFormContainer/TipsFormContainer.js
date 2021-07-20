@@ -5,6 +5,7 @@ const TipsFormContainer = ({ input, handleChange, value }) => {
     backgroundColor: '#26c0ab',
     color: '#00494d'
   };
+
   return (
     <div className="tips">
       <h2 className="tips__header">Select tip %</h2>
