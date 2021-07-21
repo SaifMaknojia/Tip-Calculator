@@ -1,17 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const InputForm = ({ img, title, name, placeholder, value, handleChange }) => {
-  const [allClasses, setAllClasses] = useState(['bill__value--input']);
-
-  useEffect(() => {
-    if ((value && value < 1) || value === 0) {
-      setAllClasses(prev => {
-        if (!prev.includes('red-border')) return [...prev, 'red-border'];
-        return prev;
-      });
-    }
-  }, [value]);
-
   return (
     <div className="bill">
       <div className="bill__input">
@@ -25,8 +14,12 @@ const InputForm = ({ img, title, name, placeholder, value, handleChange }) => {
         <input
           placeholder={placeholder}
           onChange={handleChange}
-          className={allClasses.join(' ')}
-          value={value}
+          className={
+            (value && value < 1) || value === 0
+              ? 'bill__value--input red-border'
+              : 'bill__value--input'
+          }
+          value={(value && value < 1) || value === 0 ? '' : value}
           type="number"
           name={name}
         />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TipsFormContainer = ({ input, handleChange, value }) => {
+const TipsFormContainer = ({ input, handleChange, value, totalTip }) => {
   const darkCyanBGColor = {
     backgroundColor: '#26c0ab',
     color: '#00494d'
@@ -8,7 +8,13 @@ const TipsFormContainer = ({ input, handleChange, value }) => {
 
   return (
     <div className="tips">
-      <h2 className="tips__header">Select tip %</h2>
+      <div className="tips-container">
+        <h2 className="tips__header">Select tip %</h2>
+        <p className="tips__total">
+          <span className="tips__total--span">Total Tip:</span>$
+          {totalTip.toFixed(2)}
+        </p>
+      </div>
       <div className="tips-value">
         <label className="tips-value__fixed">
           <input
@@ -100,7 +106,7 @@ const TipsFormContainer = ({ input, handleChange, value }) => {
             className="tips-value__custom"
             type="text"
             placeholder="Custom"
-            value={value}
+            value={(value && value < 1) || value === 0 ? '' : value}
             name="customTip"
             onChange={handleChange}
           />

@@ -7,7 +7,6 @@
       font-size: 12px;
     }
     &--hidden {
-      display: block;
       font-size: 10px;
       color: orangered;
     }
@@ -58,10 +57,12 @@ input[type='number'] {
 }
 
 .red-border {
+  border: 2px solid orangered;
+  color: orangered !important;
   &:focus {
-    border: 2px solid red;
+    border: 2px solid orangered;
   }
   &:active {
-    border: 2px solid red;
+    border: 2px solid orangered;
   }
 }

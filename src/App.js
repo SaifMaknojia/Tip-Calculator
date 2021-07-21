@@ -17,6 +17,18 @@ function App() {
 
   const tipIntoPercentage = (check.tip / 100) * check.bill;
 
+  const totalTip = () => {
+    if (check.tip && check.customTip) {
+      return check.tip + tipIntoPercentage + check.customTip;
+    } else if (check.tip) {
+      return check.tip + tipIntoPercentage;
+    } else if (check.customTip) {
+      return check.customTip;
+    } else {
+      return 0;
+    }
+  };
+
   //creating function to dynamically update info based on user actions
   const individualTipCalculation = () => {
     if (check.tip && check.customTip) {
@@ -83,6 +95,7 @@ function App() {
               input={check.tip}
               handleChange={handleChange}
               value={check.customTip}
+              totalTip={totalTip()}
             />
 
             <InputForm
