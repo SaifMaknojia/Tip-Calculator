@@ -19,9 +19,9 @@ function App() {
 
   const totalTip = () => {
     if (check.tip && check.customTip) {
-      return check.tip + tipIntoPercentage + check.customTip;
+      return tipIntoPercentage + check.customTip;
     } else if (check.tip) {
-      return check.tip + tipIntoPercentage;
+      return tipIntoPercentage;
     } else if (check.customTip) {
       return check.customTip;
     } else {
