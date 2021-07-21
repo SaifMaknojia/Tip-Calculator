@@ -1,3 +1,6 @@
+### Start Project
+run `npm start` || `yarn start`
+
 ### Built with
 -Flexbox
 -Sass-css
