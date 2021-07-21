@@ -106,7 +106,11 @@ const TipsFormContainer = ({ input, handleChange, value, totalTip }) => {
             className="tips-value__custom"
             type="text"
             placeholder="Custom"
-            value={(value && value < 1) || value === 0 ? '' : value}
+            value={
+              (value && value < 1) || value === 0 || !value || value === 'e'
+                ? ''
+                : value
+            }
             name="customTip"
             onChange={handleChange}
           />
